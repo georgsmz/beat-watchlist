@@ -142,9 +142,43 @@ function exportToFile() {
   a.remove();
   URL.revokeObjectURL(url);
 }
+const uploadBtn = document.getElementById('uploadBtn');
+const uploadInput = document.getElementById('uploadInput');
+
+uploadBtn.addEventListener('click', () => {
+  uploadInput.click();
+});
+
+uploadInput.addEventListener('change', () => {
+  const file = uploadInput.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      const data = JSON.parse(e.target.result);
+      if (!Array.isArray(data)) {
+        alert('Ungültiges Format: JSON muss ein Array sein.');
+        return;
+      }
+      localStorage.setItem('savedLinks', JSON.stringify(data));
+      loadLinks();
+      alert('Daten erfolgreich geladen!');
+    } catch (error) {
+      alert('Fehler beim Einlesen der JSON-Datei.');
+      console.error(error);
+    }
+  };
+  reader.readAsText(file);
+
+  // Reset Input, damit man die gleiche Datei nochmal laden kann, falls nötig
+  uploadInput.value = '';
+});
+
 
 // Seite laden
 window.addEventListener('load', loadLinks);
 
 // Download Button Event
 document.getElementById('downloadBtn').addEventListener('click', exportToFile);
+
