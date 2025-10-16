@@ -231,9 +231,32 @@ button:hover {
   box-shadow: 0 4px 12px rgba(128, 0, 32, 0.7);
 }
 
+#uploadBtn {
+  position: fixed;
+  top: 20px;
+  right: 70px; /* Etwas links vom Download-Button */
+  width: 36px;
+  height: 36px;
+  background: transparent url('data:image/svg+xml;utf8,<svg fill="%23800020" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zm7-18v12l4-4h-3V4h-2v6H8l4 4z"/></svg>') no-repeat center center;
+  background-size: contain;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  border-radius: 50%;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1000;
+  transform: rotate(180deg); /* Drehen, damit es wie Upload aussieht */
+}
+
+#uploadBtn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(128, 0, 32, 0.7);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .cards {
     grid-template-columns: 1fr; /* Auf kleinen Bildschirmen: 1 Spalte */
   }
 }
+
