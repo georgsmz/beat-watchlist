@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>BEAT Watchlist</title>
+
+  <!-- Google Font für Header -->
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet" />
+
+  <!-- Favicon mit G -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='85' font-size='80' font-family='Anton,Arial,sans-serif' fill='%23800020'%3EG%3C/text%3E%3C/svg%3E" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>BEAT Watchlist</h1>
+  </header>
+
+  <form id="linkForm">
+    <input type="url" id="url" placeholder="Link (https://...)" required />
+    <input type="text" id="title" placeholder="Titel" required />
+
+    <div class="flex-row">
+      <input type="text" id="bpm" placeholder="BPM" required />
+      <input type="text" id="key" placeholder="Key" required />
+    </div>
+
+    <!-- Beschreibung entfernt -->
+
+    <input type="text" id="image" placeholder="Vorschaubild URL (optional)" />
+    <button type="submit">Speichern</button>
+  </form>
+
+  <div class="cards" id="cardsContainer"></div>
+
+  <button id="downloadBtn" title="Als JSON herunterladen" aria-label="Als JSON herunterladen"></button>
+
+  <script src="script.js"></script>
+  <script>
+    document.getElementById('downloadBtn').addEventListener('click', exportToFile);
+  </script>
+</body>
+</html>
